@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dhpktporc15uq"]
+
+[ext_resource type="Script" uid="uid://dup6w6c4vo2a0" path="res://scripts/credits_menu.gd" id="1_27l6r"]
+
+[node name="CreditsMenu" type="Control" unique_id=152473530]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27l6r")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1972291191]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -12.999985
+offset_right = 29.0
+offset_bottom = 27.000015
+scale = Vector2(10.583127, 15.691719)
+color = Color(0.044153363, 2.4065375e-08, 0.3462671, 1)
+
+[node name="Label" type="Label" parent="." unique_id=241646977]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 11.0
+offset_right = 240.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Label2" type="Label" parent="." unique_id=1428401218]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 69.0
+offset_right = 118.0
+offset_bottom = 92.0
+text = "Car Assets:"
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1298742835]
+propagate_maximum_size = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 98.0
+offset_right = 354.0
+offset_bottom = 281.0
+text = "TopDown Vehicles v1.17 by @MinZiin_, licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/).
+https://minzinn.itch.io/pixelvehicles"
+editable = false
+wrap_mode = 1
+
+[node name="Label3" type="Label" parent="." unique_id=807009930]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 571.0
+offset_right = 324.0
+offset_bottom = 594.0
+text = "Game made by matt (matrn.dev)"
+
+[node name="ReturnButton" type="Button" parent="." unique_id=1444835269]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 319.0
+offset_right = 231.0
+offset_bottom = 355.0
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

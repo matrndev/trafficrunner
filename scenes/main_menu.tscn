@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://di2akn77e2lw0"]
+
+[ext_resource type="Script" uid="uid://dtosf0djjhx48" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=417746441]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=680466044]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -12.999985
+offset_right = 29.0
+offset_bottom = 27.000015
+scale = Vector2(10.583127, 15.691719)
+color = Color(0.044153363, 2.4065375e-08, 0.3462671, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1571902623]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 207.0
+offset_right = 346.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 41
+text = "TrafficRunner"
+
+[node name="CreditsButton" type="Button" parent="." unique_id=416929070]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 324.0
+offset_right = 253.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 25
+text = "Credits"
+
+[node name="StartButton" type="Button" parent="." unique_id=2870387]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 273.0
+offset_right = 237.0
+offset_bottom = 316.0
+theme_override_font_sizes/font_size = 25
+text = "Start"
+
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
