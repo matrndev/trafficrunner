@@ -26,4 +26,3 @@ func _physics_process(delta: float) -> void:
 			car_x = car_x + lane_width
 	
 	position.x = move_toward(position.x, car_x, lane_change_speed * delta)
-		

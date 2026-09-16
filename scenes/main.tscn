@@ -1,26 +1,38 @@
 [gd_scene format=3 uid="uid://dfvy2xx58skoi"]
 
+[ext_resource type="Script" uid="uid://1gn3pejyq537" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dhxvoay4jrbx7" path="res://assets/road.png" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://cykir3r5btbre" path="res://scripts/road.gd" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cooibgtotdeuo" path="res://assets/TopDown Vehicles/BOX TRUCK TOPDOWN/Green/SEPARATED/Green_BOXTRUCK_CLEAN_All_036.png" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://8fde52trwjjg" path="res://scenes/enemy_car.tscn" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://d2bef42nyb8sc" path="res://scenes/game_over_screen.tscn" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://byrrnlbw012ih" path="res://scripts/player_car.gd" id="3_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://7y2sd76vx2v1" path="res://assets/TopDown Vehicles/other_cars/1.png" id="5_tbgi4"]
-[ext_resource type="Script" uid="uid://bbr5esqg8ljtk" path="res://scripts/enemy_car.gd" id="5_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(31, 79)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(31.137745, 77.84432)
-
 [node name="Main" type="Node" unique_id=145964005]
+script = ExtResource("1_o6xl0")
+enemy_car_scene = ExtResource("2_tefeu")
+game_over_scene = ExtResource("3_o6xl0")
 
 [node name="Road" type="Sprite2D" parent="." unique_id=2008135224]
 position = Vector2(200, 200)
 texture = ExtResource("1_sugp2")
 script = ExtResource("2_jyhfs")
 
+[node name="PointsLabel" type="Label" parent="." unique_id=233296650]
+z_index = 2
+offset_left = 180.0
+offset_top = 23.0
+offset_right = 220.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
 [node name="PlayerCar" type="CharacterBody2D" parent="." unique_id=1992662192]
+z_index = 2
 position = Vector2(200, 498)
 scale = Vector2(1.67, 1.67)
 script = ExtResource("3_tbgi4")
@@ -32,18 +44,9 @@ texture = ExtResource("2_sugp2")
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_jyhfs")
 
-[node name="EnemyCar" type="CharacterBody2D" parent="." unique_id=827789858]
-position = Vector2(200, -100)
-rotation = 3.1415927
-scale = Vector2(1.67, 1.67)
-script = ExtResource("5_tefeu")
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyCar" unique_id=172964376]
-texture = ExtResource("5_tbgi4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCar" unique_id=696770046]
-position = Vector2(-3.0517578e-05, 2.3952103)
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_tefeu")
+[node name="EnemyCarSpawnRate" type="Timer" parent="." unique_id=754235542]
+wait_time = 3.0
+autostart = true
 
 [connection signal="ready" from="PlayerCar" to="PlayerCar" method="_on_ready"]
+[connection signal="timeout" from="EnemyCarSpawnRate" to="." method="_on_enemy_car_spawn_rate_timeout"]

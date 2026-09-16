@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://8fde52trwjjg"]
+
+[ext_resource type="Script" uid="uid://bbr5esqg8ljtk" path="res://scripts/enemy_car.gd" id="1_mr7yb"]
+[ext_resource type="Texture2D" uid="uid://7y2sd76vx2v1" path="res://assets/TopDown Vehicles/other_cars/1.png" id="2_ermhv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(31.137745, 77.84432)
+
+[node name="EnemyCar" type="CharacterBody2D" unique_id=440525943]
+z_index = 1
+rotation = 3.1415927
+scale = Vector2(1.67, 1.67)
+script = ExtResource("1_mr7yb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1557498728]
+texture = ExtResource("2_ermhv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1007456642]
+position = Vector2(-3.0517573e-05, 2.3952098)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_tefeu")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1736759318]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1322548700]
+position = Vector2(-3.0517576e-05, 2.39521)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_tefeu")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
