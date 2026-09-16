@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dfvy2xx58skoi"]
+
+[ext_resource type="Script" uid="uid://ccldliio7ogql" path="res://scenes/player_car.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://cooibgtotdeuo" path="res://assets/TopDown Vehicles/BOX TRUCK TOPDOWN/Green/SEPARATED/Green_BOXTRUCK_CLEAN_All_036.png" id="2_sugp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(31, 79)
+
+[node name="Main" type="Node" unique_id=145964005]
+
+[node name="PlayerCar" type="CharacterBody2D" parent="." unique_id=1992662192]
+position = Vector2(198, 479)
+script = ExtResource("1_0wfyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCar" unique_id=689230870]
+texture = ExtResource("2_sugp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCar" unique_id=1052923103]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[connection signal="ready" from="PlayerCar" to="PlayerCar" method="_on_ready"]
