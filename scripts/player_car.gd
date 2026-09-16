@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var lane_change_speed: float = 600.0
-@export var lane_width: float = 100.0
+@export var lane_width: float = 130.0
 
 var current_lane: int = 1
 var max_lanes: int = 2
@@ -26,5 +26,4 @@ func _physics_process(delta: float) -> void:
 			car_x = car_x + lane_width
 	
 	position.x = move_toward(position.x, car_x, lane_change_speed * delta)
-	print(current_lane)
 		

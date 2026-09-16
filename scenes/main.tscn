@@ -1,16 +1,29 @@
 [gd_scene format=3 uid="uid://dfvy2xx58skoi"]
 
-[ext_resource type="Script" uid="uid://ccldliio7ogql" path="res://scenes/player_car.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://dhxvoay4jrbx7" path="res://assets/road.png" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://cykir3r5btbre" path="res://scripts/road.gd" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cooibgtotdeuo" path="res://assets/TopDown Vehicles/BOX TRUCK TOPDOWN/Green/SEPARATED/Green_BOXTRUCK_CLEAN_All_036.png" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://byrrnlbw012ih" path="res://scripts/player_car.gd" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://7y2sd76vx2v1" path="res://assets/TopDown Vehicles/other_cars/1.png" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://bbr5esqg8ljtk" path="res://scripts/enemy_car.gd" id="5_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
 size = Vector2(31, 79)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(31.137745, 77.84432)
+
 [node name="Main" type="Node" unique_id=145964005]
 
+[node name="Road" type="Sprite2D" parent="." unique_id=2008135224]
+position = Vector2(200, 200)
+texture = ExtResource("1_sugp2")
+script = ExtResource("2_jyhfs")
+
 [node name="PlayerCar" type="CharacterBody2D" parent="." unique_id=1992662192]
-position = Vector2(198, 479)
-script = ExtResource("1_0wfyh")
+position = Vector2(200, 498)
+scale = Vector2(1.67, 1.67)
+script = ExtResource("3_tbgi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerCar" unique_id=689230870]
 texture = ExtResource("2_sugp2")
@@ -18,5 +31,19 @@ texture = ExtResource("2_sugp2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCar" unique_id=1052923103]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="EnemyCar" type="CharacterBody2D" parent="." unique_id=827789858]
+position = Vector2(200, -100)
+rotation = 3.1415927
+scale = Vector2(1.67, 1.67)
+script = ExtResource("5_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyCar" unique_id=172964376]
+texture = ExtResource("5_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCar" unique_id=696770046]
+position = Vector2(-3.0517578e-05, 2.3952103)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_tefeu")
 
 [connection signal="ready" from="PlayerCar" to="PlayerCar" method="_on_ready"]
